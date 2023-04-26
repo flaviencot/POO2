@@ -2,10 +2,17 @@ require 'pry'
 
 class Player 
   attr_accessor :name, :life_points
-
-  def initialize(name, life_points = 10)
+  @@array = []
+  def initialize(name, life_points = 10, is_parent = true)
     @name = name
     @life_points = life_points
+    if is_parent == true
+      @@array << self
+    end
+  end
+
+  def self.all
+    @@array 
   end
 
   def show_state
@@ -87,5 +94,4 @@ class HumanPlayer < Player
     end
   end
 end
-
-#binding.pry
+binding.pry
